@@ -52,6 +52,14 @@
             <version>4.21.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-logger-api -->
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-logger-api</artifactId>
+            <version>3.2.5</version>
+            <scope>test</scope>
+        </dependency>
+
 
 
     </dependencies>
