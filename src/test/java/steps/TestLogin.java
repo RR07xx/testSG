@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -30,9 +31,21 @@ public class TestLogin {
         driver.findElement(By.name("password")).sendKeys("Test1234");
         driver.findElement(By.xpath("/html/body/section/div/div/div[1]/div/form/button")).click();
     }
+    @When("^I click on login and enter the (.+) and (.+)$")
+    public void iClickOnLoginAndEnterTheAnd(String Username, String Password) {
+        driver.findElement(By.partialLinkText("Signup / Login")).click();
+        driver.findElement(By.name("email")).sendKeys(Username);
+        driver.findElement(By.name("password")).sendKeys(Password);
+        driver.findElement(By.xpath("/html/body/section/div/div/div[1]/div/form/button")).click();
+    }
     @Then("I should see the login page")
     public void i_should_see_the_login_page() throws InterruptedException {
         Assert.assertEquals(driver.getTitle(), "Automation Exercise");
     }
 
+
+    @And("I should close the browser")
+    public void iShouldCloseTheBrowser() {
+        driver.close();
+    }
 }
