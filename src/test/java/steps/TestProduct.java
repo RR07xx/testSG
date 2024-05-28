@@ -47,7 +47,7 @@ public class TestProduct{
         driver.findElement(By.partialLinkText("Logout")).click();
     }
 
-    @And("I close the browser")
+    @Then("I close the browser")
     public void iCloseTheBrowser() {
         driver.close();
     }

@@ -38,14 +38,10 @@ public class TestLogin {
         driver.findElement(By.name("password")).sendKeys(Password);
         driver.findElement(By.xpath("/html/body/section/div/div/div[1]/div/form/button")).click();
     }
-    @Then("I should see the login page")
-    public void i_should_see_the_login_page() throws InterruptedException {
+    @Then("I should see the login page and close")
+    public void iShouldSeeTheLoginPageAndClose() throws InterruptedException {
         Assert.assertEquals(driver.getTitle(), "Automation Exercise");
+        driver.close();
     }
 
-    @Then("I should close the browser")
-    public void i_should_close_the_browser() {
-        driver.close();
-        throw new io.cucumber.java.PendingException();
-    }
 }

@@ -4,8 +4,7 @@ Feature: Login Feature
   Scenario Outline: Verify the login of the application
     Given I navigate to the home page
     When I click on login and enter the <Username> and <Password>
-    Then I should see the login page
-    Then I should close the browser
+    Then I should see the login page and close
 
     Examples:
       | Username        | Password |
