@@ -5,3 +5,4 @@ Feature: Login Feature
     Given I navigate to the home page
     When I click on login and enter credentials
     Then I should see the login page
+    Then I should close the browser
