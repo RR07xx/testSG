@@ -1,3 +1,4 @@
+@DemoTest
 Feature: Login Feature
   This feature tests the login functionality of the application
 
