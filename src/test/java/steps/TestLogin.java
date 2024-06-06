@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,9 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import org.apache.log4j.Logger;
 
 public class TestLogin {
 
+    private static final Logger logger = Logger.getLogger(TestLogin.class);
     public static ChromeDriver driver;
 
     @Given("I navigate to the home page")
@@ -23,6 +24,8 @@ public class TestLogin {
         driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(60));
         driver.manage().window().maximize();
         driver.get("https://automationexercise.com/");
+        logger.info("Page Navigated");
+        logger.debug("Debug Info");
     }
     @When("I click on login and enter credentials")
     public void i_click_on_login_and_enter_credentials() throws InterruptedException {
@@ -30,6 +33,7 @@ public class TestLogin {
         driver.findElement(By.name("email")).sendKeys("testex@mail.com");
         driver.findElement(By.name("password")).sendKeys("Test1234");
         driver.findElement(By.xpath("/html/body/section/div/div/div[1]/div/form/button")).click();
+        logger.info("Login Page Navigated");
     }
     @When("^I click on login and enter the (.+) and (.+)$")
     public void iClickOnLoginAndEnterTheAnd(String Username, String Password) {
@@ -37,11 +41,13 @@ public class TestLogin {
         driver.findElement(By.name("email")).sendKeys(Username);
         driver.findElement(By.name("password")).sendKeys(Password);
         driver.findElement(By.xpath("/html/body/section/div/div/div[1]/div/form/button")).click();
+        logger.info("Logged in");
     }
     @Then("I should see the login page and close")
     public void iShouldSeeTheLoginPageAndClose() throws InterruptedException {
         Assert.assertEquals(driver.getTitle(), "Automation Exercise");
         driver.close();
+        logger.info("Browser Closed");
     }
 
 }
